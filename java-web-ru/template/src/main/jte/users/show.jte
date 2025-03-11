@@ -7,10 +7,10 @@
 </head>
 <body>
 <div>
-    <h2><a href="/users/${page.getUser().getId()}">${page.getUser().getFirstName()}</a></h2>
-    <p>${page.getUser().getFirstName()}</p>
-    <p>${page.getUser().getLastName()}</p>
-    <p>${page.getUser().getEmail()}</p>
+    <p>${"ID: "}${page.getUser().getId()}</p>
+    <p>${"Name: "}${page.getUser().getFirstName()}</p>
+    <p>${"Last name: "}${page.getUser().getLastName()}</p>
+    <p>${"Email: "}${page.getUser().getEmail()}</p>
 </div>
 </body>
 </html>
