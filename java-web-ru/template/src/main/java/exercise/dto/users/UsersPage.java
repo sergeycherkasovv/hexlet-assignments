@@ -9,7 +9,7 @@ import lombok.Getter;
 // BEGIN
 @AllArgsConstructor
 @Getter
-public class UsersPage{
+public class UsersPage {
     private List<User> users;
 }
 // END
