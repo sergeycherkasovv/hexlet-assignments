@@ -36,8 +36,7 @@ public class Application {
     @GetMapping("/posts")
     public List<Post> index(@RequestParam(defaultValue = "10") Integer limit,
                             @RequestParam(defaultValue = "1") Integer page) {
-        var offset = (page - 1) * limit;
-        return posts.subList(offset, offset + limit);
+        return posts.stream().skip((page - 1) * limit).limit(limit).toList();
     }
 
     @PostMapping("/posts")
