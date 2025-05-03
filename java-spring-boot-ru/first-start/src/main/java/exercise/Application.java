@@ -13,7 +13,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @GetMapping("/")
+    @GetMapping("/about")
     String home() {
         return "Welcome to Hexlet!";
     }
