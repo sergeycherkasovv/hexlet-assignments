@@ -61,7 +61,7 @@ public class Application {
     }
 
     @PutMapping("/posts/{id}")
-    public ResponseEntity<Post> update(@RequestParam String id, @RequestBody Post data) {
+    public ResponseEntity<Post> update(@PathVariable String id, @RequestBody Post data) {
         var maybePost = posts.stream()
                 .filter(p -> p.getId().equals(id))
                 .findFirst();
@@ -73,6 +73,9 @@ public class Application {
             post.setBody(data.getBody());
         }
 
+        if (maybePost.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(data);
     }
     // END
