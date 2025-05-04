@@ -36,7 +36,8 @@ public class Application {
                                             @RequestParam(defaultValue = "1") Integer page) {
         var result = posts.stream().skip((page - 1) * limit).limit(limit).toList();
 
-        return ResponseEntity.ok()
+        return ResponseEntity
+                .ok()
                 .header("X-Total-Count", String.valueOf(posts.size()))
                 .body(result);
     }
@@ -66,17 +67,18 @@ public class Application {
                 .filter(p -> p.getId().equals(id))
                 .findFirst();
 
+        var status = HttpStatus.NOT_FOUND;
         if (maybePost.isPresent()) {
             var post = maybePost.get();
             post.setId(data.getId());
             post.setTitle(data.getTitle());
             post.setBody(data.getBody());
+            status = HttpStatus.OK;
         }
 
-        if (maybePost.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(data);
+        return ResponseEntity
+                .status(status)
+                .body(data);
     }
     // END
 
