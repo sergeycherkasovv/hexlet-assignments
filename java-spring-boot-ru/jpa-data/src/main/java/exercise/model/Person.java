@@ -18,8 +18,7 @@ public class Person {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    private String firsName;
+    private String firstName;
     private String lastName;
 }
 // END
-
