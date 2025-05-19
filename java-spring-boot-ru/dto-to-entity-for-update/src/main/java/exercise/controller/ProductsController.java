@@ -60,13 +60,13 @@ public class ProductsController {
         var product = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product with id " + id + " not found"));
 
-        toUpdateEntity(productData, product);
+        toEntity(productData, product);
         productRepository.save(product);
         var productDTO = toDTO(product);
         return productDTO;
     }
 
-    private Product toUpdateEntity(ProductUpdateDTO productDTO, Product product) {
+    private Product toEntity(ProductUpdateDTO productDTO, Product product) {
         product.setTitle(productDTO.getTitle());
         product.setPrice(productDTO.getPrice());
         return product;
